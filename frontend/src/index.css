@@ -1,0 +1,390 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #795548; /* Coffee Brown */
+  --primary-hover: #5d4037; /* Dark Espresso */
+  --secondary-color: #a1887f; /* Latte */
+  --dark-bg: #fdfaf7; /* Creamy White background */
+  --darker-bg: #f5f0eb; /* Soft Beige for sidebar */
+  --card-bg: #ffffff; /* Pure White for panels */
+  --text-main: #3e2723; /* Deep Coffee text */
+  --text-muted: #7d6b67; /* Muted Brown text */
+  --border-color: #e0d7d0; /* Light Brown border */
+  --success: #689f38; /* Natural Green */
+  --danger: #d32f2f; /* Elegant Red */
+  --warning: #ffa000; /* Warm Amber */
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  
+  --shadow-sm: 0 4px 12px rgba(121, 85, 72, 0.08);
+  --shadow-md: 0 10px 30px rgba(121, 85, 72, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+input, textarea, [contenteditable="true"] {
+  user-select: text;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(121, 85, 72, 0.3);
+}
+
+.btn-secondary {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+.btn-outline:hover {
+  background: rgba(121, 85, 72, 0.05);
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background: #ffffff;
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* Layouts */
+.app-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 260px;
+  background: var(--darker-bg);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.sidebar-logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-color);
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.sidebar nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 0;
+}
+
+/* Custom Scrollbar for Sidebar */
+.sidebar nav::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar nav::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.sidebar nav::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+}
+
+.nav-link:hover, .nav-link.active {
+  background: rgba(121, 85, 72, 0.08);
+  color: var(--primary-color);
+  border-left-color: var(--primary-color);
+}
+
+.main-content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+/* Grid System */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+/* Dashboard Cards */
+.stat-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stat-title {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* POS Screen */
+.pos-container {
+  display: flex;
+  height: calc(100vh - 60px);
+  gap: 20px;
+}
+
+.pos-menu {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pos-cart {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.product-card {
+  cursor: pointer;
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+}
+
+.cart-items {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: rgba(121, 85, 72, 0.05);
+  border-radius: var(--radius-sm);
+}
+
+.table-selector {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.table-btn {
+  min-width: 80px;
+  height: 80px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+}
+
+.table-btn.active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* Tables */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th, .data-table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.data-table th {
+  color: var(--text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.data-table tr:hover {
+  background: rgba(121, 85, 72, 0.03);
+}
+
+/* Utilities classes */
+.text-success { color: var(--success); }
+.text-danger { color: var(--danger); }
+.text-warning { color: var(--warning); }
+.text-primary { color: var(--primary-color); }
+.mb-1 { margin-bottom: 8px; }
+.mb-2 { margin-bottom: 16px; }
+.mb-3 { margin-bottom: 24px; }
+.mt-2 { margin-top: 16px; }
+
+/* PRINT STYLES - Chỉ hiện khi in hóa đơn */
+/* PRINT STYLES - Hỗ trợ cả hóa đơn và báo cáo */
+@media print {
+  /* Ẩn các thành phần giao diện không cần thiết */
+  aside, .sidebar, nav, .btn, .no-print, .login-container, .table-selector {
+    display: none !important;
+  }
+  
+  /* Ẩn màn hình bán hàng để hiện hóa đơn nhiệt */
+  .pos-container {
+    display: none !important;
+  }
+
+  body, html {
+    background: #fff !important;
+    color: #000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .main-content {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    display: block !important;
+  }
+
+  /* Định dạng báo cáo A4 */
+  .glass-panel {
+    background: #fff !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .data-table th, .data-table td {
+    border: 1px solid #ddd !important;
+    color: #000 !important;
+    padding: 8px !important;
+  }
+
+  /* Định dạng Hóa đơn nhiệt 80mm */
+  .print-invoice {
+    display: block !important;
+    width: 80mm;
+    margin: 0 auto;
+    padding: 5mm;
+    font-family: 'Times New Roman', serif;
+    color: #000;
+  }
+
+  .print-invoice * { color: #000 !important; }
+  .print-invoice table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+  .print-invoice th, .print-invoice td { border: 1px solid #000; padding: 4px; font-size: 12px; }
+  .print-invoice .header { text-align: center; margin-bottom: 15px; }
+  .print-invoice .dotted-line { border-bottom: 1px dotted #000; margin: 5px 0; }
+}
+
+.print-invoice {
+  display: none;
+}
